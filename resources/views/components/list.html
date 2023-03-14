@@ -1,0 +1,9 @@
+<ul>
+    {% for todo in todos %}
+            <li class="bg-rose-500 m-4 p-4 text-white text-lg cursor-pointer hover:border rounded hover:rounded-xl shadow-lg">
+                    <a href="/todo?id={{ todo.id }}" class="block w-full h-full">
+                            {{ todo.name }}
+                    </a>
+            </li>
+    {% endfor %}
+</ul>

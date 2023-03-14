@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+{{ checkFieldsConn }}
+
+<script type="module" src="http://localhost:5173/@vite/client"></script>
+
+<section class="w-full px-8 py-16 xl:px-8 bg-cover bg-[url('./resources/assets/images/swords1.jpg')]">
+    <div class="max-w-5xl mx-auto">
+        <div class="flex flex-col items-center md:flex-row ">
+ 
+            <div class="w-full space-y-5 md:w-3/5 md:pr-16 "><br>
+                <p class="font-bold text-xl text-blue-500 uppercase" data-primary="blue-500">Collect them all</p>
+                <h2 class="text-2xl font-extrabold leading-none text-black sm:text-3xl md:text-5xl">
+                    Get Your Favorite Sword To Crush Your Ennemies.
+                </h2>
+                <p class="text-xl text-white md:pr-16">We are committed to making shopping with us <strong>a pleasurable experience.</strong> We’re happy to help you find the right items <strong>to fit your needs.</strong></p>
+            </div>
+            <div class="w-full mt-16 md:mt-0 md:w-2/5">
+                
+                <img src="./resources/assets/images/conan3.gif" alt="gif" class="rounded-md w-full">
+            </div>
+            </div><br><br>
+        </div>
+    </div>
+
+</section>
+
+{% endblock %}

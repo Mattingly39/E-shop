@@ -1,0 +1,9 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+Bienvenue {{ user.name }}<br>
+Vous êtes connecté
+
+<br><a href="/?deConnected=1"><button class="px-3 py-4 font-medium text-white bg-blue-600 rounded-lg" data-primary="blue-600" data-rounded="rounded-lg">Log Me Out</button></a> 
+<br><br>
+{% endblock %}

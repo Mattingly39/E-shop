@@ -1,0 +1,70 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:200,400&display=swap" rel="stylesheet">
+    <style>
+        svg {
+        display: inline;
+        }
+</style>
+</head>
+<body class="bg-white text-gray-600 work-sans leading-normal text-base tracking-normal">
+
+    <section class="bg-white grid lg:grid-cols-[1fr_1fr_2%]">
+        <div class="container mx-auto items-center pt-4 pb-12 ">
+            <div class="p-6 flex flex-col text-center items-center">
+                <p>Reference : {{ product.reference }}</p><br>
+                    <img src="{{ product.image }}">
+                    <div class="pt-3 flex items-center justify-between">
+                    <p>{{ product.product_name }}</p>
+                    </div>
+                    <p class="pt-1 font-bold text-2xl text-center text-green-500">{{ product.price|number_format(2, '.', ' ') }} €</p><br>
+            {% if product.qty > 0 %}
+            {% if compteurs is not null %}
+                {% for compteur in compteurs %}
+                    {% if product.id == compteur.id %}
+                        {% if product.qty > compteur.count1 %}
+                            <a href="/basket?productID={{ product.id }}">
+                            <button class="px-3 py-1 font-medium text-white bg-blue-500 text-center rounded-lg hover:bg-blue-800" data-primary="blue-600" data-rounded="rounded-lg">Add to Cart
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" >
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z">
+                            </svg></button></a>
+                        {% elseif compteur.count1 == product.qty %}
+                            <p class="pt-1 font-bold text-2xl text-red-500">You've reached the STOCK LIMIT</p>
+                        {% endif %}
+                    {% endif %}  
+                {% endfor %}
+            {% else %}
+                    <a href="/basket?productID={{ product.id }}">
+                        <button class="px-3 py-1 font-medium text-white bg-blue-500 text-center rounded-lg hover:bg-blue-800" data-primary="blue-600" data-rounded="rounded-lg">Add to Cart
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" >
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z">
+                        </svg></button></a>   
+            {% endif %}  
+            {% else %}
+            <p class="pt-1 font-bold text-2xl text-red-500">OUT OF STOCK</p>
+            {% endif %}
+            </div>
+        </div>
+        <div class="grid lg:grid-cols-[600px] items-center justify-between">
+            <strong class="text-center text-xl">{{ product.product_name }}</strong>
+            <p>{{ product.description }}</p><br>
+        <div class="grid lg:grid-cols-[1fr_1fr] items-center justify-between">    
+        <img class="object-contain h-5/6" src="{{ product.image2 }}">
+        <div class="grid lg:grid-cols-[1fr] items-center justify-between"> 
+        <br><img src="{{ product.image3 }}"><br>
+        <img src="{{ product.image4 }}">
+          </div>
+        </div>
+        </div>
+ *
+ 
+ *
+    </section>
+</body>
+
+</html>
+
+
+{% endblock %}
